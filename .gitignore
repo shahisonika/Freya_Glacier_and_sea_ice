@@ -7,3 +7,7 @@ __pycache__/
 # Temporary files
 *.tmp
 *.log
+
+# Large files
+data/processed_data/sic_phenology/ci_all_masked_greenland_sea.nc
+data/processed_data/sic_phenology/ci_all_masked_greenland_sea_7d.nc
