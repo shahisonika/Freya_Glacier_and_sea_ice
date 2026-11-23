@@ -1,2 +1,9 @@
 # Data folders
 data/raw_data
+
+# Python
+__pycache__/
+
+# Temporary files
+*.tmp
+*.log

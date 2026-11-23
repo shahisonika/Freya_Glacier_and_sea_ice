@@ -2448,9 +2448,9 @@ class RacmoEvaluation:
 
         # Save the plot
         logger.info(f"Saving plot of 'Freya on RACMO mask'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'evaluate_and_plot_smb.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures')
+        fig_name = 'Figure_B2.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
 
         # %%
@@ -2722,9 +2722,9 @@ class RacmoEvaluation:
         fp.adjust_borders(fig, targets)
 
         logger.info(f"Saving plot of 'evaluate_and_plot_wind_direction'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'evaluate_and_plot_wind_direction.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S2.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
     # %%
     def evaluate_and_plot_t2m_q2m_at_zac():
         # %%
@@ -2878,9 +2878,9 @@ class RacmoEvaluation:
 
         # Save the plot
         logger.info(f"Saving plot of 'Freya on RACMO mask'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'evaluate_and_plot_t2m_q2m_at_zac.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S1.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
 
         # %%
@@ -4210,9 +4210,9 @@ class SeaIceAnalysis:
         fp.adjust_borders(fig, targets)
 
         logger.info(f"Saving plot of 'plot_greenland_sea_sif_phenology'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_greenland_sea_sif_phenology.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S4.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 # %%
     def plot_greenland_sea_sif_phenology_one_point():
         # %%
@@ -4405,9 +4405,9 @@ class SeaIceAnalysis:
         # cb.ax.yaxis.tick_left()
 
         logger.info(f"Saving plot of 'plot_greenland_sea_sif_phenology_one_point'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_greenland_sea_sif_phenology_one_point.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures')
+        fig_name = 'Figure_2.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
         # %%
         lon_mask = gr_masks_5km['lon']
@@ -4945,9 +4945,9 @@ class SeaIceAnalysis:
         fp.adjust_borders(fig, targets)
 
         logger.info(f"Saving plot of 'plot_greenland_sea_ice_at_doo_dor_doa_doc'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_greenland_sea_ice_at_doo_dor_doa_doc.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S4.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
         # %%
     def print_plot_greenland_sea_ice_at_doo_dor_doa_doc():
@@ -5273,9 +5273,9 @@ class SeaIceAnalysis:
         fp.adjust_borders(fig, targets)
 
         logger.info(f"Saving plot of 'plot_greenland_sea_ice_at_doo_dor_doa_doc_and_trend'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_greenland_sea_ice_at_doo_dor_doa_doc_and_trend.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures')
+        fig_name = 'Figure_6.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
         # %%
 
     def print_young_sound_fjord_sea_ice_breakup_formation():
@@ -5857,6 +5857,8 @@ class SMBAndSeaIceAnalysis:
         fig.canvas.mpl_connect('resize_event', lambda e: fp.adjust_borders(fig, targets))
         fp.adjust_borders(fig, targets)
 
+        ax.text(-0.0825, 0.975, '(a)', transform=ax.transAxes, ha='center', va='bottom', fontsize=7, color='k', fontweight='bold', path_effects=[pe.withStroke(linewidth=1.5, foreground='white')]) # fontweight='bold'
+
         # Plot Greenland map
         # ax_map = fig.add_axes([0.72, 0.58, 0.5, 0.4])   # [left, bottom, width, height] in figure coordinates (0 to 1)
         # ax_map = fig.add_axes([0.01, 0.01, 0.5, 0.4])   # [left, bottom, width, height] in figure coordinates (0 to 1)
@@ -5948,6 +5950,7 @@ class SMBAndSeaIceAnalysis:
         ax_map.set_ylim([-12, 11.6])
         ax_map.axis('off')
         ax_map.set_aspect('equal', adjustable='box')
+        ax.text(-0.0825, 0.9, '(b)', transform=ax_map.transAxes, ha='center', va='bottom', fontsize=7, color='k', fontweight='bold', path_effects=[pe.withStroke(linewidth=1.5, foreground='white')]) # fontweight='bold'
 
         # Plot zoomed-in map
         # ax = fig.add_subplot(gs[0, 1])
@@ -6071,9 +6074,9 @@ class SMBAndSeaIceAnalysis:
         ax_legend.legend(handles=[grIS_label, peri_label, tundra_label], bbox_to_anchor=(0.5, 0.1), ncol=1, handlelength=1, handleheight=1, labelspacing=1.3, markerscale=1.5, **legend_param)
 
         logger.info(f"Saving plot of 'plot_annual_cycle_sea_ice_100km_vs_freya_smb_vs_z500'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_annual_cycle_sea_ice_100km_vs_freya_smb_vs_z500.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures')
+        fig_name = 'Figure_3.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
         # %%
 
@@ -7184,9 +7187,9 @@ class LaggedRelationships:
         fp.adjust_borders(fig, targets)
 
         logger.info(f"Saving plot of 'plot_early_late_sea_ice_dor_years'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_early_late_sea_ice_dor_years_grsea_ys.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S3.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
         # %%
 
     def print_instantaneous_correlation_between_sea_ice_and_zac_variables_for_all_dor():
@@ -7481,9 +7484,9 @@ class LaggedRelationships:
         cb.outline.set_linewidth(0.4)
 
         logger.info(f"Saving plot of 'plot_instantaneous_correlation_between_sea_ice_and_zac_variables_for_early_late_dor_month'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        fig_name = 'plot_instantaneous_correlation_between_sea_ice_and_zac_variables_for_early_late_dor_month.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+        fig_name = 'Figure_S5.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
 
     # %%
     def calculate_instantaneous_correlation_between_sea_ice_and_zac_variables_for_early_late_dor():
@@ -7806,7 +7809,7 @@ class LaggedRelationships:
         norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
         cbtick = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-        for period in ['early', 'late']:
+        for period, figure_name in [('early', 'Figure_S6'), ('late', 'Figure_S7')]:
             fig = plt.figure(figsize=(7, 6), dpi=600)
             # left years | right years | colorbar
             outer = fig.add_gridspec(nrows=2, ncols=2, height_ratios=[1, 0.04], hspace=0.08, wspace=0.15)
@@ -7918,9 +7921,9 @@ class LaggedRelationships:
             fp.adjust_borders(fig, targets)
 
             logger.info(f"Saving plot of 'plot_lagged_correlation_between_sea_ice_and_zac_variables_for_early_late_dor'...")
-            base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-            fig_name = f"plot_lagged_correlation_between_sea_ice_and_zac_variables_for_{period}_{var_pair[0]}_{var_pair[1]}_dor.png"
-            fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+            base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+            # fig_name = f"plot_lagged_correlation_between_sea_ice_and_zac_variables_for_{period}_{var_pair[0]}_{var_pair[1]}_dor.png"
+            fig.savefig(f"{base_output_path}/{figure_name}", dpi=600)
         # %%
 
     def plot_wind_directions_during_early_late_dor():
@@ -8006,7 +8009,7 @@ class LaggedRelationships:
         norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
         cbtick = [0, 2, 4, 6, 8, 10, 12]
 
-        for period in ['early', 'late']:
+        for period, figure_name in [('early', 'Figure_S8'), ('late', 'Figure_S9')]:
             fig = plt.figure(figsize=(25, 15), dpi=600)
             outer = fig.add_gridspec(nrows=2, ncols=1, height_ratios=[1, 0.04], hspace=0)
             gs_top = outer[0, :].subgridspec(2, 4, hspace=0., wspace=0.)
@@ -8113,9 +8116,9 @@ class LaggedRelationships:
             fp.adjust_borders(fig, targets)
 
             logger.info(f"Saving plot of 'plot_wind_directions_during_early_late_dor'...")
-            base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-            fig_name = f"plot_wind_directions_during_{period}_dor.png"
-            fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+            base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/supplementary_figures')
+            # fig_name = f"plot_wind_directions_during_{period}_dor.png"
+            fig.savefig(f"{base_output_path}/{figure_name}", dpi=600)
 
         # %%
     def plot_wind_directions_during_fog_event():

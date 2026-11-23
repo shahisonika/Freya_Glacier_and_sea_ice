@@ -35,7 +35,6 @@ import matplotlib.gridspec as gridspec
 from matplotlib.lines import Line2D
 from matplotlib.patches import Rectangle
 from matplotlib.patches import FancyArrowPatch
-from matplotlib.path import Path
 from typing import Optional, Literal, Iterable, Union
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 import scipy.signal as signal
@@ -581,7 +580,8 @@ class ComplexVarimaxRotatedMCA:
         mode: int,
         total_modes: int,
         rotation: str,
-        rotation_modes: int):
+        rotation_modes: int,
+        figure_name: str):
         """Plot the complex varimax rotated MCA results.
 
         """
@@ -642,7 +642,6 @@ class ComplexVarimaxRotatedMCA:
             # Get lat lon meshgrid and land sea mask
             if variable == 'smb':
                 lonlat = get_latlon_meshgrid(variable=variable)
-                # lonlat_coarsened = get_latlon_meshgrid(variable=variable, coarsen_level=4)
                 lonlat_coarsened = get_latlon_meshgrid(variable=variable, coarsen_level=4)
             else:
                 lonlat = get_latlon_meshgrid(variable=variable)
@@ -758,7 +757,7 @@ class ComplexVarimaxRotatedMCA:
 
                 if (variable == 'ci') | (variable == 'z0500'):
                     # # Read the sea ice buffer
-                    mask_file_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/raw_data/masks')
+                    mask_file_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/raw_data/masks'
                     # sea_ice_buffer_da = xr.open_dataset(f"{mask_file_path}/ci_all_buffers_on_racmo5km.nc")['sea_ice_buffer']
                     # Greenland Sea mask for z500
                     gsea_mask = xr.open_dataarray(f"{mask_file_path}/greenland_sea_mask_5km_updated_coordinates.nc")
@@ -788,7 +787,7 @@ class ComplexVarimaxRotatedMCA:
                 elif (left_var_name == 'z0500') and (right_var_name == 'ci'):
                     ax.text(0.025, 0.925, fig_label, transform=ax.transAxes, horizontalalignment='left', size=8, fontweight='bold', color='k', zorder=30, path_effects=[pe.withStroke(linewidth=1.5, foreground='w')])
         # Variance explained by the mode
-        main_path = Path(f"/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/processed_data/complex_xeofs_results")
+        main_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/processed_data/complex_xeofs_results'
         variance_explained = xr.open_dataarray(f"{main_path}/squared_covariance_fraction_{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mjjas_1990to2019_xeofs_unrotated.nc")
         # variance_explained = xr.open_dataarray(f"{main_path}/squared_covariance_fraction_{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_monthly_mean_1990to2019_xeofs_unrotated.nc")
         variance_explained_mode = variance_explained.sel(mode=mode).values
@@ -845,10 +844,10 @@ class ComplexVarimaxRotatedMCA:
 
         # Save the plot
         logger.info(f"Saving the analytical svd plot for ...")
-        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG2_complex_mca_plots-plot_analytical_svd_'
-        # fig.savefig(f"{base_output_path}{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mode_{mode}_monthly_mean_{rotation}.png", dpi=600)
-        fig.savefig(f"{base_output_path}{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mode_{mode}_mjjas_{rotation}.png", dpi=600)
-
+        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures'
+        # # fig.savefig(f"{base_output_path}{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mode_{mode}_monthly_mean_{rotation}.png", dpi=600)
+        # fig.savefig(f"{base_output_path}{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mode_{mode}_mjjas_{rotation}.png", dpi=600)
+        fig.savefig(f"{base_output_path}/{figure_name}.png", dpi=300)
     # %%
     def plot_principal_component_and_frequency_spectrum_(
         left_var_name: str,
@@ -1086,7 +1085,8 @@ class ComplexVarimaxRotatedMCA:
         mode: int,
         total_modes: int,
         rotation: str,
-        rotation_modes: int):
+        rotation_modes: int,
+        figure_name: str,):
         """Plot the complex varimax rotated MCA results.
 
         """
@@ -1347,8 +1347,8 @@ class ComplexVarimaxRotatedMCA:
 
         # Save the plot
         logger.info(f"Saving plot_principal_component_and_frequency_spectrum for ...")
-        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG2_complex_mca_plots-plot_principal_component_and_frequency_spectrum_'
-        fig.savefig(f"{base_output_path}mode_{mode}_mjjas_{rotation}.png", dpi=600)
+        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures'
+        fig.savefig(f"{base_output_path}/{figure_name}.png", dpi=600)
 
         # %%
     def plot_covariance_of_modes():
@@ -1372,7 +1372,7 @@ class ComplexVarimaxRotatedMCA:
 
         # Read data
         for left_var_name, coarsen_level_left, right_var_name, coarsen_level_right, color in [('ci', 0, 'smb', 4, (27, 158, 119)), ('z0500', 0, 'smb', 4, (217, 95, 2)), ('z0500', 0, 'ci', 0, (117, 112, 179))]:
-            main_path = Path(f"/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/processed_data/complex_xeofs_results")
+            main_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/processed_data/complex_xeofs_results'
             squared_covariance_fraction = xr.open_dataarray(f"{main_path}/squared_covariance_fraction_{left_var_name}_{coarsen_level_left}_vs_{right_var_name}_{coarsen_level_right}_mjjas_1990to2019_xeofs_unrotated.nc")
             squared_covariance_fraction = squared_covariance_fraction.sel(mode=squared_covariance_fraction.mode.values[:38])  # Limit to first 40 modes for plotting
 
@@ -1486,8 +1486,8 @@ class ComplexVarimaxRotatedMCA:
 
         # Save the plot
         logger.info(f"Saving plot_covariance_of_modes for ...")
-        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG2_complex_mca_plots-plot_covariance_of_modes_mjjas'
-        fig.savefig(f"{base_output_path}.png", dpi=300)
+        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures'
+        fig.savefig(f"{base_output_path}/Figure_4.png", dpi=300)
 
     # %%
     def calculate_and_print_phase_shift_ci_smb_z500(left_var_name: str,
@@ -1627,7 +1627,8 @@ class ComplexVarimaxRotatedMCA:
 
         """
         # %%
-
+        from matplotlib.patches import FancyArrowPatch
+        from matplotlib.path import Path
 
         # read_file_path = Path('/nas/data/processed/people/sos/third_paper_data/freyagl_svd_analysis/extracted_racmo_var/from_freya_glacier')
         read_file_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/data/processed_data/extracted_racmo_var/from_freya_glacier'
@@ -1905,9 +1906,9 @@ class ComplexVarimaxRotatedMCA:
 
         logger.info(f"Saving plot of 'plot_annual_cycle_smb_within_significant_insignificance_amplitude'...")
         # base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG1_data_analysis-')
-        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG2_complex_mca_plots-'
-        fig_name = 'plot_annual_cycle_smb_within_significant_insignificance_amplitude.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = '/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures'
+        fig_name = 'Figure_B4.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
     # %%
     def calculate_and_print_correlation_between_promax_rotated_pcs():
         """Calculate the spearman correlation between the principal components of the left and right variables in the promax rotation.
@@ -2009,11 +2010,10 @@ class ComplexVarimaxRotatedMCA:
         # %%
 if __name__ == "__main__":
     # for left_var_name, coarsen_level_left, right_var_name, coarsen_level_right in [
-    #     ('ci', 0, 'smb', 4),
-    #     ('z0500', 0, 'smb', 4),
+    #     # ('ci', 0, 'smb', 4),]:
+    #     # ('z0500', 0, 'smb', 4)]:
     #     ('z0500', 0, 'ci', 0)]:
-    #     # for mode in [1, 2, 3]:
-    #     for mode in [1]:
+    #     for mode in [2]: #[1, 2, 3]
     #         # for rotation in ['varimax', 'promax']:
     #         for rotation in ['varimax',]:
     #             ComplexVarimaxRotatedMCA.plot_analytical_svd(left_var_name=left_var_name,
@@ -2023,16 +2023,23 @@ if __name__ == "__main__":
     #                                                         mode=mode,
     #                                                         total_modes=3,
     #                                                         rotation=rotation,
-    #                                                         rotation_modes=3)
+    #                                                         rotation_modes=3,
+    #                                                         # figure_name='manuscript_figures/Figure_5') # ('ci', 0, 'smb', 4)
+    #                                                         # figure_name='manuscript_figures/Figure_B5') # ('z0500', 0, 'ci', 0)
+    #                                                         # figure_name='manuscript_figures/Figure_B6') # ('z0500', 0, 'smb', 4)
+    #                                                         # figure_name='supplementary_figures/Figure_S10') # ('z0500', 0, 'smb', 4) mode=2
+    #                                                         figure_name='supplementary_figures/Figure_S11') # ('z0500', 0, 'ci', 0) mode=2
 
-    # for mode in [1, 2]:
-    #     for rotation in ['varimax',]: #  'promax'
-    #         ComplexVarimaxRotatedMCA.plot_principal_component_and_frequency_spectrum(mode=mode,
-    #                                                                              total_modes=3,
-    #                                                                              rotation=rotation,
-    #                                                                              rotation_modes=3)
+    for mode in [2]: #[1, 2, 3]
+        for rotation in ['varimax',]: #  'promax'
+            ComplexVarimaxRotatedMCA.plot_principal_component_and_frequency_spectrum(mode=mode,
+                                                                                 total_modes=3,
+                                                                                 rotation=rotation,
+                                                                                 rotation_modes=3,
+                                                                                #  figure_name='manuscript_figures/Figure_B3') # mode=1
+                                                                                 figure_name='supplementary_figures/Figure_S12') # mode=2
 
-    ComplexVarimaxRotatedMCA.plot_covariance_of_modes()
+    # ComplexVarimaxRotatedMCA.plot_covariance_of_modes()
 
 
     # for left_var_name, coarsen_level_left, right_var_name, coarsen_level_right in [

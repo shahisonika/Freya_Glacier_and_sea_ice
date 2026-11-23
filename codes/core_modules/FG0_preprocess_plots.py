@@ -359,9 +359,9 @@ class FreyaInRacmo:
 
         # Save the plot
         logger.info(f"Saving plot of 'Freya on RACMO mask'...")
-        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/FG0_preprocess_plots-')
-        fig_name = 'plot_freya_glacier_mask_1km.png'
-        fig.savefig(f"{base_output_path}{fig_name}", dpi=600)
+        base_output_path = Path('/nas/home/sos/third_paper_work/shahi_et_al_2027_atmos/figures/manuscript_figures')
+        fig_name = 'Figure_B1.png'
+        fig.savefig(f"{base_output_path}/{fig_name}", dpi=600)
         # %%
 
     def plot_freya_glacier_mask_5km():
