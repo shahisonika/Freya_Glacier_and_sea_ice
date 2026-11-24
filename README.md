@@ -1,10 +1,8 @@
-# Atmospheric Processes and Glacier Mass Balance in Northeast Greenland
-
-**Repository:** `shahi_et_al_2027_atmos`
+# Timescales of sea ice–glacier coupling in Northeast Greenland: Freya Glacier as a case study
 
 This repository contains the Python codes, data-processing workflows, and figures associated with the manuscript:
 
-> Shahi et al. (2027). *[Timescales of sea ice–glacier coupling in Northeast Greenland: Freya Glacier as a case study].*
+> Shahi et al. (2027). *Timescales of sea ice–glacier coupling in Northeast Greenland: Freya Glacier as a case study.*
 
 ## 1. Repository overview
 
@@ -17,7 +15,7 @@ The repository is organized into three main directories:
 ## 2. Repository structure
 
 ```text
-shahi_et_al_2027_atmos/
+shahi_et_al_2027/
 │
 ├── README.md
 ├── LICENSE
@@ -26,11 +24,9 @@ shahi_et_al_2027_atmos/
 ├── environment.yml
 │
 ├── codes/
-│   ├── core/
+│   ├── README.md
+│   ├── core_modules/
 │   │   └── [Main analysis scripts]
-│   │
-│   ├── modules/
-│   │   └── [Analysis and processing modules]
 │   │
 │   └── utilities/
 │       └── [Helper functions and utilities]
@@ -63,7 +59,7 @@ Using Conda:
 
 ```bash
 conda env create -f environment.yml
-conda activate shahi_atmos
+conda activate xeofs_env2
 ```
 
 To update the environment:
@@ -88,10 +84,9 @@ Datasets that are publicly available from external repositories are referenced i
 The `codes/` directory contains the Python scripts used throughout the analysis.
 
 - `core/`: Main scripts controlling the analysis workflow.
-- `modules/`: Reusable modules for specific analytical procedures.
 - `utilities/`: Supporting functions, helper scripts, and common utilities.
 
-The analysis scripts use the modules and utilities to process the input data and generate the results presented in the manuscript.
+The analysis scripts use the utilities to process the input data and generate the results presented in the manuscript.
 
 ## 6. Reproducing the analysis
 
@@ -101,7 +96,7 @@ To reproduce the analysis:
 2. Install the required Python environment using `environment.yml`.
 3. Obtain the input datasets listed in `data/README.md`.
 4. Place the datasets in their corresponding directories under `data/`.
-5. Execute the analysis scripts in `codes/core/` in the documented order.
+5. Execute the analysis scripts in `codes/core_modules/` in the documented order.
 6. The resulting figures and processed datasets will be generated in the corresponding output directories.
 
 **Note:** Update this section with the exact script names, execution order, and required input files before publication.
@@ -134,5 +129,4 @@ The code is distributed under the license specified in the `LICENSE` file. Pleas
 For questions regarding the code, data processing, or analysis, please contact:
 
 Sonika Shahi
-
-[Insert institutional email address]
+sonika.shahi@uni-graz.at
