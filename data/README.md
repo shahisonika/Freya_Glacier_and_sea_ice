@@ -1,18 +1,3 @@
-## 1. Raw data
-
-- `station_data/`:
-    -Freya Glacier’s automated weather station dataset was provided by the Programme for Monitoring of the Greenland Ice Sheet (PROMICE) and is available via the PROMICE data portal (https://promice.org/download-data/)
-    -The Zackenberg Research Station data from the Greenland Ecosystem Monitoring program was provided by Asiaq, Greenland Survey (Greenland), data available from https://data.g-e-m.dk/.
-- `masks/`: Raw and processed datasets used in the analysis.
-- `complex_mca_input/`: The Regional Atmospheric Climate Model (RACMO) dataset was provided by Brice Noël from IMAU used by the input of complex MCA.
-
-## 2. Processed data
-
-- `complex_xeofs_results/`: Results of complex MCA
-- `extracted_racmo_var/`: Varaibles interpolated at the specific location in a gridded files
-- `sic_phenology/`: Results of sea ice phenology, its trend, and related statistics
-
-
 # data/ Directory
 
 This directory contains the raw and processed datasets used in the analysis.
